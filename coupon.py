@@ -69,5 +69,5 @@ if st.session_state.coupon_redeemed:
     # Call the Store Button
     with col2:
         # Using markdown to create a clickable link that looks like a button with a red color scheme
-        st.markdown("<a href='tel:+1 (720) 459-8049'><button style='color: white; background-color: #DC3545; padding: 10px 24px; border: none; border-radius: 5px; cursor: pointer;'>Call the Store</button></a>", unsafe_allow_html=True)
+        st.markdown("<a href='tel:+1 (720) 459-8049'><button style='color: white; background-color: #DC3545; padding: 10px 24px; border: none; border-radius: 5px; cursor: pointer;'>Call Store</button></a>", unsafe_allow_html=True)
         #st.markdown("Clicking the button will attempt to open your phone app to call Capitol Pizza, Littleton.", unsafe_allow_html=True)
