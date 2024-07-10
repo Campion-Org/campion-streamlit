@@ -22,12 +22,12 @@ with cols[0]:
     # Add coupon form
     coupon_name = st.text_input("Coupon Name", help="Enter the name of the coupon")
     coupon_code = st.text_input("Coupon Code", help="Enter the coupon code")
-    expiration_date = st.date_input("Validity", help="Select the validity of the coupon")
+    expiration_date = st.date_input("Expiration Date", help="Select the validity of the coupon")
 
     st.subheader("Content Details")
     # Add content form
     message_content = st.text_area("Message Content", help="Enter the content of the message", height=200)
-    scheduled_date = st.date_input("Date", help="Select the date to schedule the campaign")
+    scheduled_date = st.date_input("Schedule Date", help="Select the date to schedule the campaign")
 
     add_campaign = st.button("Add Campaign", help="Click to schedule the campaign")
     if add_campaign:
