@@ -52,7 +52,7 @@ with cols[1]:
     if scheduled_campaigns:
         # Convert list to DataFrame
         df_scheduled_campaigns = pd.DataFrame(scheduled_campaigns)
-        df_scheduled_campaigns.columns = ['Coupon Name', 'Coupon Code', 'Expiration Date', 'Message Content', 'Date Time']
+        df_scheduled_campaigns.columns = ['Coupon Name', 'Coupon Code', 'Expiration Date', 'Message Content', 'Scheduled Date']
         # Convert DataFrame to HTML without index
         html = df_scheduled_campaigns.to_html(index=False, border=0, classes='table table-striped')
         # Display the DataFrame as HTML without index
