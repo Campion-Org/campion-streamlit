@@ -1,8 +1,8 @@
 #######################
 # Import libraries
 import streamlit as st
-import altair as alt
-import streamlit_shadcn_ui as ui
+import pandas as pd
+from utils import utils
 
 #######################
 # Page configuration
@@ -12,62 +12,50 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded")
 
-alt.themes.enable("dark")
 
+cols = st.columns([1, 1])
 
-#######################
-# Load data
-#df_reshaped = pd.read_csv('data/us-population-2010-2019-reshaped.csv')
+with cols[0]:
+    st.title("Schedule New Campaign")
 
+    st.subheader("Coupon Details")
+    # Add coupon form
+    coupon_name = st.text_input("Coupon Name", help="Enter the name of the coupon")
+    coupon_code = st.text_input("Coupon Code", help="Enter the coupon code")
+    expiration_date = st.date_input("Validity", help="Select the validity of the coupon")
 
-#######################
+    st.subheader("Content Details")
+    # Add content form
+    message_content = st.text_area("Message Content", help="Enter the content of the message", height=200)
+    scheduled_date = st.date_input("Date", help="Select the date to schedule the campaign")
 
+    add_campaign = st.button("Add Campaign", help="Click to schedule the campaign")
+    if add_campaign:
+        # Check if all fields are filled
+        if not coupon_name or not coupon_code or not expiration_date or not message_content or not scheduled_date:
+            st.warning("Please fill all the fields")
+        else:
+            utils.campaign.schedule_campaign(coupon_name, coupon_code, expiration_date, message_content, scheduled_date)
+            st.success(f"Campaign with {coupon_name} scheduled at {scheduled_date} successfully!")
+    # Reset the form
+    coupon_name = ""
+    coupon_code = ""
+    expiration_date = ""
+    message_content = ""
+    date_time = ""
 
-
-#######################
-# Sidebar
-with st.sidebar:
-    st.title("Campion")
-    # Break line
-    st.write("---")
-
-    # User profile with image and name on the side
-    col = st.columns([2.5, 2])
-
-    with col[0]:
-        st.image("https://avatars.githubusercontent.com/u/8320180?v=4", width=100)
-    with col[1]:
-        # Space to align the text
-        st.write("")
-        st.write("Sudeep Dhakal")
-        st.write("_Capitol Pizza, Litteton_")
-
-
-    setting_button = ui.button(text="Settings", key="settings")
-
-    ui.alert_dialog(show=setting_button, title="Settings", description="This is an alert dialog", confirm_label="OK", cancel_label="Cancel", key="alert_dialog1")
-
-
-# Card 1
-
-col = st.columns(2)
-
-#######################
-# Calendar and Coupon Schedule
-with col[0]:
-    with ui.card(key="card2", title="Calendar"):
-        with ui.card(key="card3", title="Coupon Schedule"):
-            ui.date_picker(key="date_picker", label="Date")
-
-#######################
-# Dashboard Main Panel
-with col[1]:
-    with ui.card(key="card5", title="Add Coupons"):
-        # TODO: Add coupon form here
-        # with coupon name, discount, and expiry date
-        # Also allows to refine and send messages.
-        pass
-        
-    with ui.card(key="card6", title="Retention Rate"):
-        # TODO: Retention rate chart here with toggle to change the time period
-        pass
+with cols[1]:
+    st.title("Scheduled Coupons List")
+    # Get scheduled campaigns
+    # Get scheduled campaigns
+    scheduled_campaigns = utils.campaign.get_scheduled_campaigns()
+    if scheduled_campaigns:
+        # Convert list to DataFrame
+        df_scheduled_campaigns = pd.DataFrame(scheduled_campaigns)
+        df_scheduled_campaigns.columns = ['Coupon Name', 'Coupon Code', 'Expiration Date', 'Message Content', 'Date Time']
+        # Convert DataFrame to HTML without index
+        html = df_scheduled_campaigns.to_html(index=False, border=0, classes='table table-striped')
+        # Display the DataFrame as HTML without index
+        st.markdown(html, unsafe_allow_html=True)
+    else:
+        st.warning("No scheduled campaigns found")
