@@ -3,7 +3,7 @@
 import streamlit as st
 import pandas as pd
 from utils import utils
-from streamlit_calendar import calendar
+
 #######################
 # Page configuration
 st.set_page_config(
@@ -44,36 +44,6 @@ with cols[0]:
     message_content = ""
     date_time = ""
 
-
-
-
-
-calendar_options = {
-    "editable": "true",
-    "selectable": "true",
-    "headerToolbar": {
-        "left": "today prev,next",
-        "center": "title",
-    },
-    "slotMinTime": "06:00:00",
-    "slotMaxTime": "18:00:00",
-}
-custom_css="""
-    .fc-event-past {
-        opacity: 0.8;
-    }
-    .fc-event-time {
-        font-style: italic;
-    }
-    .fc-event-title {
-        font-weight: 700;
-    }
-    .fc-toolbar-title {
-        font-size: 2rem;
-    }
-"""
-
-
 with cols[1]:
     st.title("Scheduled Coupons List")
     # Get scheduled campaigns
@@ -85,7 +55,7 @@ with cols[1]:
         df_scheduled_campaigns.columns = ['Coupon Name', 'Coupon Code', 'Expiration Date', 'Message Content', 'Scheduled Date']
         # Convert DataFrame to HTML without index
         html = df_scheduled_campaigns.to_html(index=False, border=0, classes='table table-striped')
-        calendar = calendar(events=scheduled_campaigns, options=calendar_options, custom_css=custom_css)
-        st.write(calendar)
+        # Display the DataFrame as HTML without index
+        st.markdown(html, unsafe_allow_html=True)
     else:
         st.warning("No scheduled campaigns found")
