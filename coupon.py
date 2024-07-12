@@ -49,8 +49,8 @@ if st.session_state.coupon_redeemed:
     st.markdown(f"<div class='coupon-code'>Code: {coupon_code}</div>", unsafe_allow_html=True)
     # Line break
     st.markdown("---")
-    st.markdown("<div>**Summer Discount!**</div>", unsafe_allow_html=True)
-    st.markdown("<div class='validity'>***Valid till July 19, 2024 11:59 PM***</div>", unsafe_allow_html=True)
+    st.markdown("**Summer Discount!**", unsafe_allow_html=True)
+    st.markdown("***Valid till July 19, 2024 11:59 PM***", unsafe_allow_html=True)
 
     
 if st.session_state.coupon_redeemed:
