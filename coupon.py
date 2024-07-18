@@ -45,12 +45,12 @@ if st.button("Redeem Coupon", key="redeem_button", help="Click to redeem your co
 
 if st.session_state.coupon_redeemed:
     st.success("Coupon redeemed from _Capitol Pizza, Littleton_! **Please copy the code below.**")
-    coupon_code = "SUMMER10"
+    coupon_code = "COMBO"
     st.markdown("Code: "+ f"<div class='coupon-code'>{coupon_code}</div>", unsafe_allow_html=True)
     # Line break
     st.markdown("---")
-    st.markdown("**Summer Discount!**", unsafe_allow_html=True)
-    st.markdown("***Valid till July 19, 2024 11:59 PM***", unsafe_allow_html=True)
+    st.markdown("**Any 14\" Combo $15!**", unsafe_allow_html=True)
+    st.markdown("***Valid till July 25, 2024 11:59 PM***", unsafe_allow_html=True)
 
     
 if st.session_state.coupon_redeemed:
