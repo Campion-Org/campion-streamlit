@@ -50,7 +50,7 @@ coupon_code = "BOGO50"
 st.markdown("Code: "+ f"<div class='coupon-code'>{coupon_code}</div>", unsafe_allow_html=True)
 # Line break
 st.markdown("---")
-st.markdown("**Buy 1, Get 1 50% Off on 10\" and 14\" Pizzas!**", unsafe_allow_html=True)
+st.markdown("**Buy 1, Get 1 50% Off on 10\" Pizzas!**", unsafe_allow_html=True)
 st.markdown("***Valid only till August 08, 2024 11:59 PM.***", unsafe_allow_html=True)
 
     
