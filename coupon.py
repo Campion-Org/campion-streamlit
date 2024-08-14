@@ -46,12 +46,12 @@ st.markdown("""
 
 #if st.session_state.coupon_redeemed:
 st.success("Coupon redeemed from _Capitol Pizza, Littleton_! **Please copy the code below.**")
-coupon_code = "BOGO50"
+coupon_code = "LG13"
 st.markdown("Code: "+ f"<div class='coupon-code'>{coupon_code}</div>", unsafe_allow_html=True)
 # Line break
 st.markdown("---")
-st.markdown("**Buy 1, Get 1 50% Off on 10\" Pizzas!**", unsafe_allow_html=True)
-st.markdown("***Valid only till August 08, 2024 11:59 PM.***", unsafe_allow_html=True)
+st.markdown("**14\" one topping pizza for $13\" Pizzas!**", unsafe_allow_html=True)
+st.markdown("***Valid only till August 19, 2024 11:59 PM.***", unsafe_allow_html=True)
 
     
 #if st.session_state.coupon_redeemed:
